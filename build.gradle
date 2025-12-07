@@ -5,15 +5,19 @@ plugins {
 }
 
 group = 'com.small.rose'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 description = 'Demo project for Spring Boot'
 
-
-
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+// 使用项目属性动态设置名称
+jar {
+    archiveFileName = "${project.name}-${project.version}.jar"
+    // 详见 README
 }
 
 configurations {
@@ -45,14 +49,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
 	implementation ('org.springframework.boot:spring-boot-starter-web'){
-		 exclude module: 'spring-boot-starter-tomcat'
+		 // exclude module: 'spring-boot-starter-tomcat'
 	}
 	implementation 'org.springframework.session:spring-session-data-redis'
     implementation 'org.springframework.session:spring-session-jdbc'
     implementation("com.alibaba:druid-spring-boot-3-starter:1.2.25")
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	implementation('com.oracle.database.jdbc:ojdbc11')
+    implementation('com.h2database:h2')
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -67,11 +72,11 @@ dependencies {
 	implementation 'com.alibaba:fastjson:1.2.79'
 	// https://mvnrepository.com/artifact/cn.hutool/hutool-core
 	implementation("cn.hutool:hutool-core:5.8.42")
-	implementation files(
+	/*implementation files(
 			'libs/bes-actuator-spring-boot-2.x-starter-9.5.2.017.jar',
 			'libs/bes-lite-spring-boot-2.x-starter-9.5.2.017.jar',
 			'libs/bes-websocket-9.5.2.017.jar'
-	)
+	)*/
 }
 
 tasks.named('test') {

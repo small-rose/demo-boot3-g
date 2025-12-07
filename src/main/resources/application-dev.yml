@@ -5,7 +5,7 @@ spring:
   # 1. H2 数据库配置
   datasource:
     # url: jdbc:h2:mem:testdb  # 使用内存数据库，应用重启后数据清空
-    url: jdbc:h2:file:./data/boot3g  # 使用文件数据库，数据持久化到磁盘
+    url: jdbc:h2:file:./data/boot3g;MODE=Oracle;DATABASE_TO_LOWER=TRUE # 使用文件数据库，数据持久化到磁盘
     driver-class-name: org.h2.Driver
     username: sa
     password: "123456"
