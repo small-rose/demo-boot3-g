@@ -1,3 +1,9 @@
+server:
+  port: 8080
+  shutdown: graceful
+  servlet:
+    context-path: /demo-boot3
+
 app:
   datasource:
     primary:
@@ -53,3 +59,46 @@ spring:
   # 缓存配置
   cache:
     type: redis
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+
+knife4j:
+  enable: true
+  setting:
+    language: zh-CN
+    enable-version: true
+    enable-reload-cache-parameter: false
+    enable-after-script: true
+    enable-filter-multipart-api-method-type: POST
+    enable-filter-multipart-apis: false
+    enable-request-cache: true
+    enable-host-text: localhost:8080
+    enable-host: false
+    enable-home-custom: true
+    home-custom-path: classpath:markdown/home.md
+    enable-search: true
+    enable-footer: false
+    enable-footer-custom: true
+    footer-custom-content: Apache License 2.0 | Copyright  2023-[小菜科技有限公司](https://your-website.com)
+    enable-dynamic-parameter: false
+    enable-debug: true
+    enable-open-api: true
+    enable-api-docs: true
+    enable-group: true
+  cors: false
+  production: false
+  basic:
+    enable: false
+    username: admin
+    password: 123456
